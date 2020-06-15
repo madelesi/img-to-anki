@@ -1,0 +1,23 @@
+{
+  "name": "img-to-anki",
+  "version": "0.0.1",
+  "description": "Create an Anki apkg from image files.",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open"
+  },
+  "keywords": [],
+  "author": "madelesi",
+  "license": "MIT",
+  "devDependencies": {
+    "script-loader": "^0.7.2",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "anki-apkg-export": "^4.0.3",
+    "file-saver": "^2.0.2"
+  }
+}
