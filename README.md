@@ -23,6 +23,7 @@ Start a development server (automatically builds after every change)
 ```
 npm start
 ```
+Main Files are src/index.js and dist/index.html
 
 
 
