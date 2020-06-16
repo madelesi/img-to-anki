@@ -25,9 +25,6 @@ npm start
 ```
 Main/Entry files are src/index.html and src/index.js
 
-
-
-
 ## Contributing
 
 Feel free to create a pull request & start coding.
