@@ -3,33 +3,34 @@ import AnkiExport from "anki-apkg-export";
 
 
 function main(){
-	let inputElement = document.getElementById("input");
-	inputElement.addEventListener("change", handleFiles, false);
+	let genBtn = document.getElementById("genBtn");
+	let deckName = document.getElementById("deckName");
+	genBtn.addEventListener("click", handleFiles, false);
 
 	function handleFiles() {
 		let selectedFiles = document.getElementById('input').files;
-		let apkg = filesToAnkiPkg(selectedFiles);
+		let apkg = filesToAnkiPkg(selectedFiles, deckName);
 		downloadApkg(apkg)
 	}
 
 }
 
-function filesToAnkiPkg(fileList) {
-	// Returns a .apkg file from a fileList or an array of file
+function filesToAnkiPkg(fileList, deckName="MyDeck") {
+	// Returns a .apkg file from a fileList or an array of files
    
 	// Sort Files by modified date
 	let sortedArray = sortFileListModified(fileList)
 
 	// Check that length is even
-	if (sortedArray.length % 2 != 0) {
-		throw "there must be an even number of files "
+	if (sortedArray.length % 2 != 0 || sortedArray.length == 0) {
+		throw "there must be an even number (not zero) of files"
 	}
 
 	// Pair files
 	let q_a_pairs = arrayToPairs(sortedArray)
 
 	// Add Pairs to AnkiDeck?
-	let apkg = filePairsToAnkiPkg(q_a_pairs);
+	let apkg = filePairsToAnkiPkg(q_a_pairs, deckName);
 	return apkg;
 }
 function downloadApkg(apkg) {
@@ -55,11 +56,11 @@ function arrayToPairs(a) {
 	return pairsArr
 }
 
-function filePairsToAnkiPkg(filePairs) {
+function filePairsToAnkiPkg(filePairs, deckName="MyDeck") {
 	// Takes in 2-d array of file pairs (Ex. [[Question1, Ans1], [Question2, Ans2]] )
 	// Returns an AnkiExport apkg object.
 
-	let apkg = new AnkiExport("AnkiDeck")
+	let apkg = new AnkiExport(deckName)
 
 	// Add all files to media & cards
 	for (var i = filePairs.length - 1; i >= 0; i--) {

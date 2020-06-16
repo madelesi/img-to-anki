@@ -1,5 +1,5 @@
 
-# Project Title
+# Img-To-Anki
 
 Converts Physical flashcards (image files) into an Anki deck (.apkg File).
 
@@ -23,6 +23,7 @@ Start a development server (automatically builds after every change)
 ```
 npm start
 ```
+Main/Entry files are src/index.html and src/index.js
 
 
 
