@@ -4,11 +4,11 @@ import AnkiExport from "anki-apkg-export";
 
 function main(){
 	let genBtn = document.getElementById("genBtn");
-	let deckName = document.getElementById("deckName");
 	genBtn.addEventListener("click", handleFiles, false);
 
 	function handleFiles() {
 		let selectedFiles = document.getElementById('input').files;
+		let deckName = document.getElementById("deckName").value;
 		let apkg = filesToAnkiPkg(selectedFiles, deckName);
 		downloadApkg(apkg)
 	}
@@ -60,6 +60,7 @@ function filePairsToAnkiPkg(filePairs, deckName="MyDeck") {
 	// Takes in 2-d array of file pairs (Ex. [[Question1, Ans1], [Question2, Ans2]] )
 	// Returns an AnkiExport apkg object.
 
+    console.log("Anki Deck Name: " + deckName)
 	let apkg = new AnkiExport(deckName)
 
 	// Add all files to media & cards
