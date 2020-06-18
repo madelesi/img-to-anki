@@ -3,13 +3,28 @@
 <html>
   <head>
     <title>Img To Anki</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <link rel="manifest" href="manifest.json" />
   </head>
   <body>
-	<input type="file" id="input" multiple>
-	<label for="deckName">Deck Name:</label>
-	<input type="text" id="deckName" name="deckName" required minlength="1" maxlength="100" size="10" value="MyDeck">
-	<input type="button" id="genBtn" value="Generate Deck">
-
+    <label for="input">Images to add to Anki: </label>
+    <p></p>
+  	<input type="file" id="input" multiple>
+    <p></p>
+  	<label for="deckName">Deck Name:</label>
+  	<input type="text" id="deckName" required minlength="1" maxlength="100" size="10" value="MyDeck">
+    <p></p>
+  	<input type="button" id="genBtn" value="Generate Deck">
+    <p>Please wait after pressing button.</p>
     <script src="main.js"></script>
+    <script>
+      console.log(navigator)
+      if('serviceWorker' in navigator) {
+        navigator.serviceWorker
+                 .register('/service-worker.js')
+                 .then(function() { console.log("Service Worker Registered"); });
+      }
+      else{console.log("No SW support")};
+    </script>
   </body>
 </html>

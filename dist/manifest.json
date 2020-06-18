@@ -1,0 +1,8 @@
+{
+  "name": "img-to-ankiTEST",
+  "short_name": "ImgAnki",
+  "display": "minimal-ui",
+  "start_url": "/",
+  "theme_color": "#673ab6",
+  "background_color": "#111111"
+}
