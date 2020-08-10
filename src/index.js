@@ -35,7 +35,7 @@ function filesToAnkiPkg(fileList, deckName="MyDeck") {
 }
 function downloadApkg(apkg) {
 
-    apkg.save().then(zip => {  saveAs(zip, 'output.apkg');}).catch(err => console.log(err.stack || err));
+    apkg.save().then(zip => {  saveAs(zip, apkg.deckName);}).catch(err => console.log(err.stack || err));
 }
 
 
